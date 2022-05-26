@@ -1,9 +1,5 @@
 # Typescript Programming
 
-## 01. 타입스크립트와 개발 환경 만들기
-
-<br>
-
 typescript 설치
 
 ```bash
@@ -20,16 +16,6 @@ $ ts-node -v
 
 - tsc : ts 코드를 js 코드로 변환, node 명령어로 js 실행해야 함
 - ts-node : ES5로 변환 + 실행
-
-<br>
-
----
-
-<br>
-
-## 02. 타입스크립트 프로젝트 생성과 관리
-
-<br>
 
 package.json 생성
 
@@ -65,3 +51,35 @@ $ tsc --init
 ```
 
 - tsconfig.json : 타입스크립트 컴파일러의 설정 파일
+
+비구조화 할당 & 잔여 연산자
+
+```ts
+let address: any = {
+  country: "Korea"
+  city: 'Seoul'
+  address1: 'Gangnam-gu'
+  address2: 'Sinsa-dong 123-456'
+  address3: '789 street, 2 Fllor ABC building'
+};
+const { country, city, ...detail } = address  // ... 잔여연산자
+
+console.log(detail)
+// { address1: 'Gangnam-gu'
+//   address2: 'Sinsa-dong 123-456'
+//   address3: '789 street, 2 Fllor ABC building' }
+```
+
+전개 연산자
+
+- 여러 객체를 merge한 새로운 객체를 만들 때 사용
+
+```ts
+let part1 = { name: "jane" },
+let part2 = { age: 22 },
+let part3 = { city: "Seoul", country: "Kr" };
+let merged = { ...part1, ...part2, ...part3 };  // ... 전개연산자
+
+console.log(merged);
+// { name: 'jane', age: 22, city: 'Seoul', country: 'Kr' }
+```
